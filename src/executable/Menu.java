@@ -38,6 +38,7 @@ public class Menu {
         if(option ==3){
             Panel p = new Panel();
             p.printBoard();
+            //p.printBoard1();
         }
         
 
