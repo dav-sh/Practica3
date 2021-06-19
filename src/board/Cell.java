@@ -1,9 +1,10 @@
 package src.board;
 public class Cell {
-    private String cell,coin;
+    private String cell;
     private int idColor;
     private String[] colors = new String[9];
     private boolean isOccupied;
+    private String a = Character.toString((char)177);
     
     public Cell(int color, boolean isOccupied) {
         colors[0]="\u001B[0m";//reset
@@ -16,8 +17,7 @@ public class Cell {
         colors[7]="\u001B[36m"; //cyan
         colors[8]="\u001B[37m";//white
         this.idColor = color;
-        this.cell = "░░░░░░░░░░░";  //░   █
-        this.coin = "█";
+        this.cell = a+a+a+a+a+a+a+a+a+a+a;  //░   █
         this.isOccupied = isOccupied;
 
     }

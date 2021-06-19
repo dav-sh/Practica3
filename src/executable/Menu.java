@@ -2,6 +2,7 @@ package src.executable;
 import src.players.ArrayPlayers;
 import src.board.Panel;
 import java.util.*;
+import src.handlers.*;
 
 public class Menu {
     private ArrayPlayers p = new ArrayPlayers();
@@ -36,8 +37,10 @@ public class Menu {
             p.seePlayers();
         }
         if(option ==3){
-            Panel p = new Panel();
-            p.printBoard();
+            Handler h = new Handler();
+            h.position();
+            // Panel p = new Panel();
+            // p.printBoard();
             //p.printBoard1();
         }
         

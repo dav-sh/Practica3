@@ -43,15 +43,10 @@ public class Panel {
             for (int k=0; k<5; k++){  //height
                 int tmp=0;
                 for (int j=0; j<columns; j++){ //column
-                    //for(int l=0; l<10;l++){ //width
-                        //if(true){}
-                            printPosition(3,3,k);
-                        
                         System.out.print(panel[i][j].getCell());
                     }
                     if(k==2){
                         System.out.print("  "+i);
-                        
                     }        
                     System.out.println("");
                 }
@@ -59,12 +54,47 @@ public class Panel {
         System.out.println("\n\n");
     }
 
-    public void printPosition(int i, int j, int k){
+
+    public void printBoard(int x, int y, boolean change){
+        //createBoard();
+        for (int i=0; i<columns; i++){
+            System.out.print("     "+i+"     ");
+        }
+        System.out.println("\n");
+        for (int i=0; i<rows; i++){ //row
+            for (int k=0; k<5; k++){  //height
+                int tmp=0;
+                for (int j=0; j<columns; j++){ //column
+                        if(change){
+
+                            printPosition(x,y,k);
+                        }
+                        System.out.print(panel[i][j].getCell());
+                    }
+                    if(k==2){
+                        System.out.print("  "+i);
+                    }        
+                    System.out.println("");
+                }
+            }
+        System.out.println("\n\n");
+    }
+
+
+
+
+    public void printPosition(int x, int y, int k){
+        String c = Character.toString((char)178);
+        String a = Character.toString((char)177);
         if(k==2){
-            panel[i][j].setCell("░░░░███░░░░");
+            //panel[x][y].setCell("░░░░███░░░░");
+
+            panel[x][y].setCell(a+a+a+a+c+c+c+a+a+a+a);
 
         }else{
-            panel[i][j].setCell("░░░░░░░░░░░");
+            panel[x][y].setCell(a+a+a+a+a+a+a+a+a+a+a);
+
+            //panel[x][y].setCell("░░░░░░░░░░░");
         }
     }
 

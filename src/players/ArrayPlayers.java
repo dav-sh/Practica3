@@ -3,7 +3,7 @@ package src.players;
 import java.util.*;
 
 public class ArrayPlayers{
-    private Player[] players=new Player[5];
+    private Player[] players=new Player[10];
     int idCounter;
     Scanner scanner = new Scanner(System.in);
     public ArrayPlayers(){
