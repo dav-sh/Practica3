@@ -16,15 +16,15 @@ Ejemplo sencillo de utilización de ant para compilación
         <!-- Create the build directory structure used by compile -->
         <mkdir dir="${build}" />
     </target>
-    <target name="compile" depends="init" description="compile the source">
+    <target name="cpl" depends="init" description="compile the source">
         <!-- Compilando el código en ${src} a ${build} -->
         <javac srcdir="${src}" destdir="${build}" />
     </target>
-    <target name="runClass" depends="compile" description="compile the source">
+    <target name="run" depends="cpl" description="compile the source">
         <!-- Compilando el código en ${src} a ${build} -->
         <java classname="src.executable.Main" classpath="${build}" />
     </target>
-    <target name="jar" depends="compile" description="Generando el directori dist para almacenar el Jar ">
+    <target name="cjar" depends="cpl" description="Generando el directori dist para almacenar el Jar ">
         <!-- Creamos el directorio dist/lib -->
         <mkdir dir="${dist}/lib" />
         <!-- Agregamos todo lo que hay en ${build} en ${nameDist}-${DSTAMP}.jar -->
@@ -43,7 +43,7 @@ Ejemplo sencillo de utilización de ant para compilación
         </javadoc>
     </target>
     <!-- Ejecutando el jar -->
-    <target name="run" depends="jar">
+    <target name="runjar" depends="cjar">
         <java jar="${dist}/lib/App-${DSTAMP}.jar" fork="true" />
     </target>
     <!-- Eliminamos los directorios ${build} y ${dist} -->
