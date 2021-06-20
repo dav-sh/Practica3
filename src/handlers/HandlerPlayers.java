@@ -55,23 +55,56 @@ public class HandlerPlayers{
         return tmp;
     }
 
-    private int verifyId(int id){
-        int cont = 0;
-        while(cont==0){
-            if(p[id-1].getId()!=0){
-                cont = 1;
-            }
+    public boolean verifyPlayers(){
 
+        int count = 0;
+        for(int i = 0; i <p.length; i++){
+            if(p[i]!=null){
+                count++;
+            }
         }
+        if(count>=2){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private int verifyId(int id){
+        do{
+            if(p[id-1].getId()!=0){
+                break;
+            }
+        }while(id==0);
         
         return id;
         
     }
 
-    public boolean selectPlayers(){
-        int id1 = verifyId(getEntero("Enter player #"+(1)+" (id): "));
-        int id2 = verifyId(getEntero("Enter player #"+(2)+" (id): "));
-        System.out.println(id1+" "+id2);
-        return true;
+
+    
+    public int selectPlayersid(int i){
+        return  verifyId(getEntero("Enter player #"+(1+i)+" (id): "));
     }
+
+    public void addScore(int id){
+        p[id].setScore(p[id-1].getScore()+1);
+    }
+
+
+
+
+
+
+    // public boolean selectPlayers(){
+    //     if(verifyPlayers()){
+    //         // int id2 = verifyId(getEntero("Enter player #"+(2)+" (id): "));
+    //         // System.out.println(id1+" "+id2);
+    //         return true;
+    //     }else{
+    //         return false;
+    //     }
+        
+    // }
+    
 }

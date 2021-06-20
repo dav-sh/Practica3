@@ -23,10 +23,7 @@ public class HandlerPanel {
 
 
 
-    public void position() {
-
-        int op;
-        do{
+    public boolean position() {
             System.out.println("\n\n");
             //initial position
             int x = getEntero("Select #row: ");
@@ -45,15 +42,14 @@ public class HandlerPanel {
                 
                 p.printBoard(x,y,x1,y1);
                 System.out.println("Logrado");
+
             }else{
                 p.printBoard();
             }
-            System.out.println("To Exit....(-1)");
-            op = getEntero("To Continue ... (1)");
-
-        }while(op!=-1);
-        
+        return true;
     }
+
+
 
 
     public boolean verifyCell(int x,int y) {
@@ -65,6 +61,9 @@ public class HandlerPanel {
         }
     }
 
+
+
+
     public boolean verifyNewCell(int x1,int y1){
         Cell[][] tmp = p.getPanel();
         if(tmp[x1][y1].getIsWhite()==false && tmp[x1][y1].getOccupied()==false){
@@ -73,4 +72,8 @@ public class HandlerPanel {
             return false; //is white && is occupied
         }
     }
+
+
+
+    
 }
