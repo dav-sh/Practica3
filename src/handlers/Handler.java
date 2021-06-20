@@ -27,10 +27,20 @@ public class Handler {
         int op = 12;
         while(op!=11){
             System.out.println("\n\n");
-            int x = getEntero("Enter x: ");
-            int y = getEntero("Enter y: "); 
-            p.printBoard(x,y,true);
+            int x = getEntero("Enter #row: ");
+            int y = getEntero("Enter #column: "); 
+            p.printBoard(x,y,verifyIsWhite(x,y));
             op = getEntero("11 para salir...");
         }
+    }
+
+    public boolean verifyIsWhite(int x,int y) {
+        Cell[][] tmp = p.getPanel();
+        if(tmp[x][y].getIsWhite()){
+            return false;
+        }else{
+            return true;
+        }
+
     }
 }

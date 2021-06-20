@@ -11,11 +11,21 @@ public class Panel {
         for (int i=0; i<rows; i++) {  //row
             for (int j=0; j<columns; j++){ //column
                 if(i%2==0 && j%2==0){ //pair column and pair row
-                    panel[i][j] = new Cell(2,false); //yellow
+                    if(i==0 || i==6 || i==2){ //start in rows 0,1,2
+                        panel[i][j] = new Cell(2,false); //yellow
+                    }else{
+                        panel[i][j] = new Cell(2,true); //yellow
+                    }
                 }else if(i%2!=0 && j%2!=0){ //odd column and odd row
+                    if(i==5 || i==1 || i==7){ //start in rows 5,6,7
                     panel[i][j] = new Cell(2,false); //yellow
+                    }else{
+                        panel[i][j] = new Cell(2,true); //yellow
+                    }
                 }else{ //
-                    panel[i][j] = new Cell(8,true); //white
+                    Cell tmp = new Cell(8,true);
+                    tmp.setIsWhite(true); //chage is white to true
+                    panel[i][j] = tmp; //white
                 }
             }
 
@@ -35,55 +45,67 @@ public class Panel {
 
     public void printBoard(){
         createBoard();
-        for (int i=0; i<columns; i++){
-            System.out.print("     "+i+"     ");
-        }
+        //print # of column
+        numbersColumn();
+        //print board
         System.out.println("\n");
         for (int i=0; i<rows; i++){ //row
             for (int k=0; k<5; k++){  //height
-                int tmp=0;
                 for (int j=0; j<columns; j++){ //column
-                        System.out.print(panel[i][j].getCell());
-                    }
-                    if(k==2){
-                        System.out.print("  "+i);
-                    }        
-                    System.out.println("");
-                }
-            }
-        System.out.println("\n\n");
-    }
-
-
-    public void printBoard(int x, int y, boolean change){
-        //createBoard();
-        for (int i=0; i<columns; i++){
-            System.out.print("     "+i+"     ");
-        }
-        System.out.println("\n");
-        for (int i=0; i<rows; i++){ //row
-            for (int k=0; k<5; k++){  //height
-                int tmp=0;
-                for (int j=0; j<columns; j++){ //column
-                        if(change){
-
-                            printPosition(x,y,k);
+                        if(!panel[i][j].getOcuppied()){
+                            changeCoin(i,j,k);
                         }
                         System.out.print(panel[i][j].getCell());
                     }
                     if(k==2){
-                        System.out.print("  "+i);
+                        System.out.print("  "+i); //print # of row
                     }        
                     System.out.println("");
                 }
             }
+        numbersColumn();
+        System.out.println("\n\n");
+
+    }
+
+
+
+
+
+
+
+    public void printBoard(int x, int y, boolean change){
+
+        //print # of column
+        numbersColumn();
+        //print board
+        System.out.println("\n");
+        for (int i=0; i<rows; i++){ //row
+            for (int k=0; k<5; k++){  //height
+                for (int j=0; j<columns; j++){ //column
+                        if(change){  //move a coin
+
+                            changeCoin(x,y,k);
+                        }
+                        if(!panel[i][j].getOcuppied()){ //print all false occupied coins 
+                            changeCoin(i,j,k);
+                        }
+                        System.out.print(panel[i][j].getCell()); //[rint the cell
+                    }
+                    if(k==2){
+                        System.out.print("  "+i); //print # of row
+                    }        
+                    System.out.println("");
+                }
+            }
+        numbersColumn();
         System.out.println("\n\n");
     }
 
 
 
 
-    public void printPosition(int x, int y, int k){
+    public void changeCoin(int x, int y, int k){
         String c = Character.toString((char)178);
         String a = Character.toString((char)177);
         if(k==2){
@@ -98,4 +120,22 @@ public class Panel {
         }
     }
 
+    public Cell[][] getPanel(){
+        return panel;
+    }
+
+    public void setPanel(int x, int y, Cell[][] panel){
+        this.panel[x][y] = panel[x][y];
+    }
+
+
+
+
+
+
+    public void numbersColumn(){
+        for (int i=0; i<columns; i++){
+            System.out.print("     "+i+"     ");
+        }
+    } 
 }
