@@ -6,6 +6,7 @@ import src.handlers.*;
 
 public class Menu {
     private ArrayPlayers p = new ArrayPlayers();
+    private HandlerGame g; 
     Scanner scanner = new Scanner(System.in);
     public Menu() {
         //clear
@@ -38,12 +39,14 @@ public class Menu {
             p.seePlayers();
         }
         if(option ==3){
-            HandlerPlayers hp = new HandlerPlayers(p.getPlayers());
-            hp.selectPlayers(); //send players[]
-            //hp.print();
+            g =new HandlerGame(p.getPlayers());
+            g.gameStart();
+            // HandlerPlayers hp = new HandlerPlayers(p.getPlayers());
+            // hp.selectPlayers(); //send players[]
+            // //hp.print();
 
-            HandlerPanel h = new HandlerPanel();
-            h.position();
+            // HandlerPanel h = new HandlerPanel();
+            // h.position();
             // Panel p = new Panel();
             // p.printBoard();
             //p.printBoard1();

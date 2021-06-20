@@ -18,15 +18,16 @@ public class HandlerPlayers{
 
 
 
-    public void selectPlayers() {
+    public boolean okPlayers() {
+        
         int count = printListPlayers();
         int id1,id2;
         if(count>=2){
-            id1 = verifyId(getEntero("Enter player #"+(1)+" (id): "));
-            id2 = verifyId(getEntero("Enter player #"+(2)+" (id): "));
-            System.out.println(id1+" "+id2);
+            
+            return true;
         }else{
             System.out.println("Please, add more players");
+            return false;
         }
         
     }
@@ -65,5 +66,12 @@ public class HandlerPlayers{
         
         return id;
         
+    }
+
+    public boolean selectPlayers(){
+        int id1 = verifyId(getEntero("Enter player #"+(1)+" (id): "));
+        int id2 = verifyId(getEntero("Enter player #"+(2)+" (id): "));
+        System.out.println(id1+" "+id2);
+        return true;
     }
 }
