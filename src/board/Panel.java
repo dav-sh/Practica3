@@ -3,6 +3,8 @@ public class Panel {
     private final int rows=8;
     private final int columns=8;
     private Cell[][] panel = new Cell[rows][columns];
+    private final String c = Character.toString((char)178);
+    private final String a = Character.toString((char)177);
     public Panel() {
         //vacio
     }
@@ -52,7 +54,7 @@ public class Panel {
         for (int i=0; i<rows; i++){ //row
             for (int k=0; k<5; k++){  //height
                 for (int j=0; j<columns; j++){ //column
-                        if(!panel[i][j].getOcuppied()){
+                        if(!panel[i][j].getOccupied()){
                             changeCoin(i,j,k);
                         }
                         System.out.print(panel[i][j].getCell());
@@ -74,7 +76,8 @@ public class Panel {
 
 
 
-    public void printBoard(int x, int y, boolean change){
+    //public void printBoard(int x, int y, boolean change){
+    public void printBoard(int x, int y, int x1,int y1){
 
         //print # of column
         numbersColumn();
@@ -83,11 +86,14 @@ public class Panel {
         for (int i=0; i<rows; i++){ //row
             for (int k=0; k<5; k++){  //height
                 for (int j=0; j<columns; j++){ //column
-                        if(change){  //move a coin
+                        //if(change){  //move a coin
 
-                            changeCoin(x,y,k);
-                        }
-                        if(!panel[i][j].getOcuppied()){ //print all false occupied coins 
+                            //changeCoin(x,y,k);
+                            resetCell(x,y);   
+                            changeCoin(x1,y1,k);
+
+                        //}
+                        if(!panel[i][j].getOccupied()){ //print all false occupied coins 
                             changeCoin(i,j,k);
                         }
                         System.out.print(panel[i][j].getCell()); //[rint the cell
@@ -106,8 +112,7 @@ public class Panel {
 
 
     public void changeCoin(int x, int y, int k){
-        String c = Character.toString((char)178);
-        String a = Character.toString((char)177);
+        
         if(k==2){
             //panel[x][y].setCell("░░░░███░░░░");
 
@@ -128,6 +133,10 @@ public class Panel {
         this.panel[x][y] = panel[x][y];
     }
 
+    public void resetCell(int x, int y){
+        panel[x][y].setOccupied(false);   //tengo q modificar los valores de false y true de las celdas
+        panel[x][y].resetCell();
+    }
 
 
 

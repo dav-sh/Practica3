@@ -36,12 +36,12 @@ public class Cell {
         return colors[op]+cell+colors[0];
     }
 
-    public boolean getOcuppied(){
+    public boolean getOccupied(){
         return isOccupied;
     }
 
-    public void setOcuppied(boolean Ocuppied){
-        this.isOccupied = Ocuppied;
+    public void setOccupied(boolean Occupied){
+        this.isOccupied = Occupied;
     }
 
     public boolean getIsWhite(){
@@ -50,6 +50,10 @@ public class Cell {
 
     public void setIsWhite(boolean IsWhite){
         this.isWhite = IsWhite;
+    }
+
+    public void resetCell(){
+        this.cell = a+a+a+a+a+a+a+a+a+a+a;
     }
 
 
