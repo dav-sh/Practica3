@@ -14,7 +14,7 @@ public class HandlerPanel {
 
     }
     
-    public int getEntero(String message){
+    private int getEntero(String message){
         System.out.println(message);
         int tmp = scanner.nextInt();
         scanner.nextLine();
