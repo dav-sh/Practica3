@@ -29,4 +29,9 @@ public class ArrayPlayers{
             System.out.println(players[i].getInfo());
         }
     }
+
+
+    public Player[] getPlayers(){
+        return players;
+    }
 }

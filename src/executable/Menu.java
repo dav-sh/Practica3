@@ -31,13 +31,18 @@ public class Menu {
     }
     public void selectMenu(int option) {
         if(option == 1) {
+
             p.addPlayer();
         }
         if(option == 2){
             p.seePlayers();
         }
         if(option ==3){
-            Handler h = new Handler();
+            HandlerPlayers hp = new HandlerPlayers(p.getPlayers());
+            hp.selectPlayers(); //send players[]
+            //hp.print();
+
+            HandlerPanel h = new HandlerPanel();
             h.position();
             // Panel p = new Panel();
             // p.printBoard();

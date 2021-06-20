@@ -3,7 +3,7 @@ public class Cell {
     private String cell;
     private int idColor;
     private String[] colors = new String[9];
-    private boolean isOccupied,isWhite;
+    private boolean isOccupied,isWhite,player1;
     private String a = Character.toString((char)177);
     
     public Cell(int color, boolean isOccupied) {
@@ -20,6 +20,7 @@ public class Cell {
         this.cell = a+a+a+a+a+a+a+a+a+a+a;  //░   █
         this.isOccupied = isOccupied;
         this.isWhite = false;
+        this.player1 = true;  //if is false (player2) else true (player1)
 
     }
     
@@ -55,7 +56,12 @@ public class Cell {
     public void resetCell(){
         this.cell = a+a+a+a+a+a+a+a+a+a+a;
     }
-
+    public void setPlayer1(boolean status){
+        this.player1 = status;
+    }
+    public boolean getPlayer1(){
+        return this.player1;
+    }
 
 
     public void printCell(){
