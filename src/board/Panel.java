@@ -32,15 +32,19 @@ public class Panel {
                         panel[i][j] = new Cell(2,false); //red
                     }
                 }else{ //
-                    Cell tmp = new Cell(8,false);
-                    tmp.setIsWhite(true); //chage is white to true
-                    panel[i][j] = tmp; //white
+                    // Cell tmp = new Cell(8,false);
+                    // tmp.setIsWhite(true); //chage is white to true
+                    // panel[i][j] = tmp; //white
+                    panel[i][j] = new Cell(8,false); //white
+                    panel[i][j].setIsWhite(true);
                 }
             }
 
         }
         
     }
+
+
     
     public void printBoard1(){
         for (int i=0; i<this.rows; i++){
