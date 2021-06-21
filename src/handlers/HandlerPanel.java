@@ -44,7 +44,11 @@ public class HandlerPanel {
 
             if(op1==true && op2==true){
                 if(canMove(x,y,x1,y1,isPlayer1)){
+                    //aqui tengo q verificar si puede comer mas o no con el deleteCoin()
 
+                    if(coinsP2()==0 || coinsP1()==0){
+                        contin = false;
+                    }
                     p.printBoard(x,y,x1,y1);
                     System.out.println("Successful..");
                     tmp = false;
@@ -54,6 +58,12 @@ public class HandlerPanel {
 
             }else{
                 p.printBoard();
+                if(isPlayer1){
+                    System.out.println("Turn Player : 1 (yellow)");
+    
+                }else{
+                    System.out.println("Turn Player : 2 (green)");
+                }
                 System.out.println("Try again...");
             }
         }while(tmp);
@@ -97,8 +107,13 @@ public class HandlerPanel {
         }else if(l1==2 && l2==2 && isPlayer1==tmp[x][y].getPlayer1()){
             int posx = (x+x1)/2;
             int posy = (y+y1)/2;
-            deleteCoin(posx,posy);
-            return true;
+            if(deleteCoin(posx,posy)){
+                return true;
+            }else{
+                System.out.println("you can't move that coin");
+                System.out.println("Try again.....");
+                return false;
+            }
         
         }else{
             System.out.println("you can't move that coin");
@@ -107,11 +122,44 @@ public class HandlerPanel {
         }
     }
 
-    public void deleteCoin(int posx, int posy){
+    public boolean deleteCoin(int posx, int posy){
         Cell[][] tmp = p.getPanel();
         if(tmp[posx][posy].getOccupied() && tmp[posx][posy].getIsWhite()==false){
             tmp[posx][posy].setOccupied(false);
+            return true;
+
+        }else{
+            return false;
         }
+    }
+
+    public int coinsP2(){
+        int countG =0;
+        Cell[][] tmp = p.getPanel();
+        for(int i = 0; i < tmp.length;i++){
+            for(int j = 0; j<tmp.length;j++){
+                if(tmp[i][j].getOccupied() && tmp[i][j].getPlayer1()==false){ //verify are green
+                    countG++;
+                }
+            }
+
+        }
+        System.out.println("Greens coins: " + countG);
+        return countG;
+    }
+    public int coinsP1(){
+        int countG =0;
+        Cell[][] tmp = p.getPanel();
+        for(int i = 0; i < tmp.length;i++){
+            for(int j = 0; j<tmp.length;j++){
+                if(tmp[i][j].getOccupied() && tmp[i][j].getPlayer1()==true){ //verify are yellow
+                    countG++;
+                }
+            }
+
+        }
+        System.out.println("Yellow coins: " + countG);
+        return countG;
     }
 
 

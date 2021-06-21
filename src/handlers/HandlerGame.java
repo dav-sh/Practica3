@@ -5,6 +5,7 @@ import java.util.*;
 
 public class HandlerGame {
     private int idP1,idP2;
+    //private int cP1,cP2;
     //private Player[] p;
     Scanner scanner = new Scanner(System.in);
     private HandlerPlayers hPlayers; 
@@ -73,6 +74,7 @@ public class HandlerGame {
         
         boolean tmp = true;
         boolean isPlayer1= true;
+        
         do{
             if(id == idP1){
                 System.out.println("Turn Player : 1 (yellow)");
@@ -82,9 +84,17 @@ public class HandlerGame {
                 isPlayer1 = false;
             }
             tmp= hPanel.position(isPlayer1);
-            hPlayers.addScore(id-1);
+            
             id=change(id);
+            
         }while(tmp);
+        if(hPanel.coinsP2()==0){ //loser p2
+            hPlayers.lessScore(idP2-1);
+            hPlayers.addScore(idP1-1);
+        }else{
+            hPlayers.lessScore(idP1-1);
+            hPlayers.addScore(idP2-1);
+        }
         System.out.println("End Game");
     }
 
@@ -163,7 +173,6 @@ public class HandlerGame {
         }
         return id;
     }
-
 
 
 }

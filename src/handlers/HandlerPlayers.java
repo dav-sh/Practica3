@@ -89,23 +89,14 @@ public class HandlerPlayers{
 
     public void addScore(int id){
         p[id].setGanadas((p[id].getGanadas()+1));
-        System.out.println("ganadas "+ p[id].getGanadas()+ " id "+(id+1));
+        System.out.println("Win "+p[id].getName()+" id:" +p[id].getId());
+    }
+
+    public void lessScore(int id){
+        p[id].setPerdidas((p[id].getPerdidas()+1));
+        System.out.println("Losser "+p[id].getName()+" id:"  +p[id].getId());
     }
 
 
-
-
-
-
-    // public boolean selectPlayers(){
-    //     if(verifyPlayers()){
-    //         // int id2 = verifyId(getEntero("Enter player #"+(2)+" (id): "));
-    //         // System.out.println(id1+" "+id2);
-    //         return true;
-    //     }else{
-    //         return false;
-    //     }
-        
-    // }
     
 }
