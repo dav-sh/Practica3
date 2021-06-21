@@ -5,7 +5,7 @@ import java.util.*;
 
 public class HandlerPlayers{
     private Player[] p;
-    private int player1id, player2id;
+    //private int player1id, player2id;
     Scanner scanner = new Scanner(System.in);
 
 
