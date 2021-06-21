@@ -42,10 +42,13 @@ public class HandlerPanel {
             
 
             if(op1==true && op2==true){
-                p.printBoard(x,y,x1,y1);
-                System.out.println("Successful..");
-                tmp=true; //if draw is ok
-                return true;
+                if(canMove(x,y,x1,y1)){
+
+                    p.printBoard(x,y,x1,y1);
+                    System.out.println("Successful..");
+                    tmp=true; //if draw is ok
+                    return true;
+                }
 
             }else{
                 p.printBoard();
@@ -53,6 +56,7 @@ public class HandlerPanel {
                 return false; //if draw is not ok
             }
         }while(!tmp);
+        return true;
     }
 
 
@@ -79,6 +83,33 @@ public class HandlerPanel {
         }
     }
 
+    
+
+    public boolean canMove(int x, int y, int x1,int y1){
+        int l1 = Math.abs(x-x1);
+        int l2 = Math.abs(y-y1);
+        System.out.println("l1: "+l1);
+        System.out.println("l2: "+l2);
+        if(l1==1 && l2==1){
+            return true;
+        }else if(l1==2 && l2==2){
+            int posx = (x+x1)/2;
+            int posy = (y+y1)/2;
+            deleteCoin(posx,posy);
+            return true;
+        
+        }else{
+
+            return false;
+        }
+    }
+
+    public void deleteCoin(int posx, int posy){
+        Cell[][] tmp = p.getPanel();
+        if(tmp[posx][posy].getOccupied() && tmp[posx][posy].getIsWhite()==false){
+            tmp[posx][posy].setOccupied(false);
+        }
+    }
 
 
 

@@ -5,10 +5,12 @@ import java.util.*;
 
 public class HandlerGame {
     private int idP1,idP2;
-    private Player[] p;
+    //private Player[] p;
     Scanner scanner = new Scanner(System.in);
     private HandlerPlayers hPlayers; 
     private HandlerPanel hPanel;// = new HandlerPanel();
+    Random rand = new Random();
+
 
 
 
@@ -37,7 +39,7 @@ public class HandlerGame {
                     System.out.println("Player: "+idP1);
 
                 }else{
-                    idP2=hPlayers.selectPlayersid(i);
+                    idP2=hPlayers.selectPlayersid(i); //here catch id p2
                     System.out.println("Player: "+idP2);
                 }
             }
@@ -62,23 +64,34 @@ public class HandlerGame {
             return idP1;
         }
     }
+
+
+
     
-    public void printPosition(int id){
-        int tmpId = id;
+    
+    public void printPosition(int id){ //id == idP1 or idP2
         
         boolean tmp = true;
         do{
-            //System.out.println("Id temporal: "+tmpId);
-            System.out.println("Turn Player : "+tmpId);
+            if(id == idP1){
+                System.out.println("Turn Player : 1 ");
+            }else if(id == idP2){
+                System.out.println("Turn Player : 2 ");
+            }
             tmp= hPanel.position();
             hPlayers.addScore(id-1);
-            tmpId=change(id);
+            id=change(id);
         }while(tmp);
         System.out.println("End Game");
     }
 
+
+
+
+
+
+
     public void inGame(int id){
-        //int turno = id;
         printPosition(id);
 
     }
@@ -89,47 +102,63 @@ public class HandlerGame {
 
 
     public int whoStart(int idP1, int idP2){
-        System.out.println("Player losser: "+idP2);
-        return idP1;
-        // Random rand = new Random();
-        // System.out.println("Rock vs Paper vs Scissors");
-        // String []game = {"rock","paper","scissors"}; 
-        // String p1,p2;
-        // boolean exit = false;
-        // while(!exit){
-        //     for(int i = 0; i <2;i++){
-        //         int option =rand.nextInt(3);
-        //         if(i==0){
-        //             p1=game[option];
-        //         }else{
-        //             p2=game[option];
-        //         }
-        //     }
-        //     if(p1.equals("rock")&&p2.equals("scissors")  ||  p1.equals("scissors")&&p2.equals("rock") ){
-        //         if(p1.equals("scissors")){
-        //             return idP1;
-        //         }else{
-        //             return idP2;
-        //         }
-        //         exit = true;
-        //     }
-        //     else if(p1.equals("paper")&&p2.equals("scissors")  ||  p1.equals("scissors")&&p2.equals("paper")){
-        //         if(p1.equals("paper")){
-        //             return idP1;
-        //         }else{
-        //             return idP2;
-        //         exit = true;
-        //     }
-        //     }
-        //     else if(p1.equals("rock")&&p2.equals("paper")  ||  p1.equals("paper")&&p2.equals("rock")){
-        //         if(p1.equals("rock")){
-        //             return idP1;
-        //         }else{
-        //             return idP2;
-        //         }
-        //         exit = true;
-        //     }
-        // }
+        //System.out.println("Player losser: "+idP2);
+        int id=idP1;
+        System.out.println("Who start? .... well");
+        System.out.println("Rock vs Paper vs Scissors");
+        String []game = {"rock","paper","scissors"}; 
+        String p1="";
+        String p2="";
+        boolean exit = false;
+        while(!exit){
+            for(int i = 0; i <2;i++){
+                int option =rand.nextInt(3);
+                if(i==0){
+                    p1=game[option];
+                }else{
+                    p2=game[option];
+                }
+            }
+            System.out.println("Player 1: "+p1);
+            System.out.println("Player 2: "+p2);
+            if(p1.equals("rock")&&p2.equals("scissors")  ||  p1.equals("scissors")&&p2.equals("rock") ){
+                if(p1.equals("rock")){
+                    id= idP1;
+                }else if(p1.equals("scissors")){
+                    id= idP2;
+                }
+                System.out.println("l1"+id);
+                exit = true;
+            }
+            else if(p1.equals("paper")&&p2.equals("scissors")  ||  p1.equals("scissors")&&p2.equals("paper")){
+                if(p1.equals("scissors")){
+                    id= idP1;
+                }else if(p1.equals("paper")){
+                    id= idP2;
+                exit = true;
+                System.out.println("l2"+id);
+
+                }
+            }
+            else if(p1.equals("rock")&&p2.equals("paper")  ||  p1.equals("paper")&&p2.equals("rock")){
+                if(p1.equals("paper")){
+                    id= idP1;
+                }else if (p1.equals("rock")){
+                    id= idP2;
+                }
+                exit = true;
+                System.out.println("l2"+id);
+
+            }
+        }
+        if(id==idP1){
+            System.out.println("Win Player 1");
+
+        }else{
+            System.out.println("Win Player 2");
+
+        }
+        return id;
     }
 
 
