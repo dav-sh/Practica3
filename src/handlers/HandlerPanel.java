@@ -33,13 +33,16 @@ public class HandlerPanel {
             int x = getEntero("Select #row: ");
             int y = getEntero("Select #column: "); 
             boolean op1 = verifyCell(x,y);
-            System.out.println(op1);
+            //System.out.println(op1);
+            System.out.println("");
             
             //end position
             int x1 = getEntero("Move to #row: ");
             int y1 = getEntero("Move to #column: "); 
             boolean op2 = verifyNewCell(x1,y1);
-            System.out.println(op1);
+            //System.out.println(op1);
+
+            System.out.println("\n");
             
 
             if(op1==true && op2==true){
@@ -51,6 +54,8 @@ public class HandlerPanel {
                     }
                     p.printBoard(x,y,x1,y1);
                     System.out.println("Successful..");
+                    System.out.println("\n");
+
                     tmp = false;
                     //tmp=true; //if draw is ok
                     
@@ -59,12 +64,12 @@ public class HandlerPanel {
             }else{
                 p.printBoard();
                 if(isPlayer1){
-                    System.out.println("Turn Player : 1 (yellow)");
+                    System.out.println("\nTurn Player : 1 (yellow)\n");
     
                 }else{
-                    System.out.println("Turn Player : 2 (green)");
+                    System.out.println("\nTurn Player : 2 (green)\n");
                 }
-                System.out.println("Try again...");
+                System.out.println("Try again...\n");
             }
         }while(tmp);
         return contin;
@@ -100,8 +105,8 @@ public class HandlerPanel {
         Cell[][] tmp = p.getPanel();
         int l1 = Math.abs(x-x1);
         int l2 = Math.abs(y-y1);
-        System.out.println("l1: "+l1);
-        System.out.println("l2: "+l2);
+        //System.out.println("l1: "+l1);
+        //System.out.println("l2: "+l2);
         if(l1==1 && l2==1 && isPlayer1==tmp[x][y].getPlayer1()){ //comparamos si la longitud es 1 y si el jugador == jugador de la ficha
             return true;
         }else if(l1==2 && l2==2 && isPlayer1==tmp[x][y].getPlayer1()){
@@ -110,14 +115,20 @@ public class HandlerPanel {
             if(deleteCoin(posx,posy)){
                 return true;
             }else{
+
+                System.out.println("\n");
                 System.out.println("you can't move that coin");
                 System.out.println("Try again.....");
+                System.out.println("\n");
                 return false;
             }
         
         }else{
+            System.out.println("\n");
             System.out.println("you can't move that coin");
             System.out.println("Try again.....");
+            System.out.println("\n");
+
             return false;
         }
     }

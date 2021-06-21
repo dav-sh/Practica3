@@ -118,7 +118,7 @@ public class HandlerGame {
         //System.out.println("Player losser: "+idP2);
         int id=idP1;
         System.out.println("Who start? .... well");
-        System.out.println("Rock vs Paper vs Scissors");
+        System.out.println("Rock vs Paper vs Scissors\n\n");
         String []game = {"rock","paper","scissors"}; 
         String p1="";
         String p2="";
@@ -133,14 +133,16 @@ public class HandlerGame {
                 }
             }
             System.out.println("Player 1: "+p1);
+            System.out.println("");
             System.out.println("Player 2: "+p2);
+            System.out.println("");
             if(p1.equals("rock")&&p2.equals("scissors")  ||  p1.equals("scissors")&&p2.equals("rock") ){
                 if(p1.equals("rock")){
                     id= idP1;
                 }else if(p1.equals("scissors")){
                     id= idP2;
                 }
-                System.out.println("l1"+id);
+                //System.out.println("l1"+id);
                 exit = true;
             }
             else if(p1.equals("paper")&&p2.equals("scissors")  ||  p1.equals("scissors")&&p2.equals("paper")){
@@ -149,7 +151,7 @@ public class HandlerGame {
                 }else if(p1.equals("paper")){
                     id= idP2;
                 exit = true;
-                System.out.println("l2"+id);
+                //System.out.println("l2"+id);
 
                 }
             }
@@ -162,8 +164,15 @@ public class HandlerGame {
                 exit = true;
                 System.out.println("l2"+id);
 
+            }else{
+                System.out.println(" tie :O ....");
+                System.out.println("well, here we go again");
+                System.out.println("\n");
+
+
             }
         }
+        System.out.println("\n");
         if(id==idP1){
             System.out.println("Win Player 1");
 
