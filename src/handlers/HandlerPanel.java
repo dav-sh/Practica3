@@ -23,8 +23,9 @@ public class HandlerPanel {
 
 
 
-    public boolean position() {
-        boolean tmp = false;
+    public boolean position(boolean isPlayer1) {
+        boolean contin = true; //i can change it for exit the game
+        boolean tmp = true;
         do{
 
             System.out.println("\n\n");
@@ -42,21 +43,21 @@ public class HandlerPanel {
             
 
             if(op1==true && op2==true){
-                if(canMove(x,y,x1,y1)){
+                if(canMove(x,y,x1,y1,isPlayer1)){
 
                     p.printBoard(x,y,x1,y1);
                     System.out.println("Successful..");
-                    tmp=true; //if draw is ok
-                    return true;
+                    tmp = false;
+                    //tmp=true; //if draw is ok
+                    
                 }
 
             }else{
                 p.printBoard();
                 System.out.println("Try again...");
-                return false; //if draw is not ok
             }
-        }while(!tmp);
-        return true;
+        }while(tmp);
+        return contin;
     }
 
 
@@ -85,21 +86,23 @@ public class HandlerPanel {
 
     
 
-    public boolean canMove(int x, int y, int x1,int y1){
+    public boolean canMove(int x, int y, int x1,int y1,boolean isPlayer1){ //player1 is true (yellow) else green for p2
+        Cell[][] tmp = p.getPanel();
         int l1 = Math.abs(x-x1);
         int l2 = Math.abs(y-y1);
         System.out.println("l1: "+l1);
         System.out.println("l2: "+l2);
-        if(l1==1 && l2==1){
+        if(l1==1 && l2==1 && isPlayer1==tmp[x][y].getPlayer1()){ //comparamos si la longitud es 1 y si el jugador == jugador de la ficha
             return true;
-        }else if(l1==2 && l2==2){
+        }else if(l1==2 && l2==2 && isPlayer1==tmp[x][y].getPlayer1()){
             int posx = (x+x1)/2;
             int posy = (y+y1)/2;
             deleteCoin(posx,posy);
             return true;
         
         }else{
-
+            System.out.println("you can't move that coin");
+            System.out.println("Try again.....");
             return false;
         }
     }

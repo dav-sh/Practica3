@@ -40,7 +40,7 @@ public class HandlerPlayers{
         for(int i = 0; i <p.length; i++){
             if(p[i]!=null){
 
-                System.out.println(p[i].getInfo());
+                p[i].getInfo();
                 count++;
             }else{
                 break;

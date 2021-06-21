@@ -40,7 +40,7 @@ public class Player{
         this.perdidas = perdidas;
     }
 
-    public String getInfo(){
-        return "id: "+id+" name: "+name+" score: "+score+" perdidas: "+perdidas+" ganadas: "+ganadas;
+    public void getInfo(){
+        System.out.printf( "id: %-2d    name: %-20s     losses: %-3d    wins: %-3d%n",id,name,perdidas,ganadas); //+" score: "+score
     }
 }

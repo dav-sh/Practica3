@@ -72,13 +72,16 @@ public class HandlerGame {
     public void printPosition(int id){ //id == idP1 or idP2
         
         boolean tmp = true;
+        boolean isPlayer1= true;
         do{
             if(id == idP1){
-                System.out.println("Turn Player : 1 ");
+                System.out.println("Turn Player : 1 (yellow)");
+                isPlayer1 = true;
             }else if(id == idP2){
-                System.out.println("Turn Player : 2 ");
+                System.out.println("Turn Player : 2 (green)");
+                isPlayer1 = false;
             }
-            tmp= hPanel.position();
+            tmp= hPanel.position(isPlayer1);
             hPlayers.addScore(id-1);
             id=change(id);
         }while(tmp);

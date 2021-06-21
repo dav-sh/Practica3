@@ -26,10 +26,14 @@ public class ArrayPlayers{
         }
     }
     public void seePlayers(){
+        System.out.println("                        About Players");
+        System.out.println("*****************************************************************");
         
         for(int i=0; i<idCounter;i++){
-            System.out.println(players[i].getInfo());
+            players[i].getInfo();
         }
+        System.out.println("*****************************************************************");
+
     }
 
 
@@ -58,10 +62,13 @@ public class ArrayPlayers{
             playersScore[position]=playersScore[i];
             playersScore[i]=change;
         }
-
+        System.out.println("                        Ranking");
+        System.out.println("*****************************************************************");
         for(int i=0; i<idCounter;i++){
-            System.out.println(playersScore[i].getInfo());
+            System.out.printf("%-2d name: %-25s        wins: %-3d%n",(i+1),playersScore[i].getName(), playersScore[i].getGanadas());
         }
+        System.out.println("*****************************************************************");
+
 
     }
 
