@@ -8,6 +8,8 @@ public class Menu {
     private ArrayPlayers p = new ArrayPlayers();
     private HandlerGame g; 
     Scanner scanner = new Scanner(System.in);
+
+
     public Menu() {
         //clear
     }
@@ -23,7 +25,8 @@ public class Menu {
             System.out.println("  Main Menu");
             System.out.println("1. Add new player");
             System.out.println("2. See player list");
-            System.out.println("3. Print board");
+            System.out.println("3. Start new Game");
+            System.out.println("4. Score table");
             System.out.println("0. Exit");
             option = getOption("Enter the option:  ");
             selectMenu(option);
@@ -41,15 +44,9 @@ public class Menu {
         if(option ==3){
             g =new HandlerGame(p.getPlayers());
             g.gameStart();
-            // HandlerPlayers hp = new HandlerPlayers(p.getPlayers());
-            // hp.selectPlayers(); //send players[]
-            // //hp.print();
-
-            // HandlerPanel h = new HandlerPanel();
-            // h.position();
-            // Panel p = new Panel();
-            // p.printBoard();
-            //p.printBoard1();
+        }
+        if(option ==4){
+            p.scoresTable();
         }
         
 

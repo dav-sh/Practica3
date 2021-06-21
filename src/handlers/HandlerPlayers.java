@@ -72,7 +72,7 @@ public class HandlerPlayers{
 
     private int verifyId(int id){
         do{
-            if(p[id-1].getId()!=0){
+            if(p[id-1].getId()!=0){ //id is enter by user
                 break;
             }
         }while(id==0);
@@ -84,11 +84,12 @@ public class HandlerPlayers{
 
     
     public int selectPlayersid(int i){
-        return  verifyId(getEntero("Enter player #"+(1+i)+" (id): "));
+        return  verifyId(getEntero("Enter player #"+(1+i)+" (id): ")); //first catch the number and after verify id is not 0
     }
 
     public void addScore(int id){
-        p[id].setScore(p[id-1].getScore()+1);
+        p[id].setGanadas((p[id].getGanadas()+1));
+        System.out.println("ganadas "+ p[id].getGanadas()+ " id "+(id+1));
     }
 
 

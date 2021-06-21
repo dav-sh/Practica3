@@ -3,7 +3,8 @@ package src.players;
 import java.util.*;
 
 public class ArrayPlayers{
-    private Player[] players=new Player[10];
+    final int numPlayers=10;
+    private Player[] players=new Player[numPlayers];
     int idCounter;
     Scanner scanner = new Scanner(System.in);
     public ArrayPlayers(){
@@ -16,7 +17,7 @@ public class ArrayPlayers{
     }
     public void addPlayer(){
         String name = getString("Enter the name of the player: " );
-        if(idCounter<5){
+        if(idCounter<numPlayers){
             players[idCounter]=new Player((idCounter+1),name);
             System.out.println("\n\nSuccessfully added\n\n");
             idCounter++;
@@ -25,6 +26,7 @@ public class ArrayPlayers{
         }
     }
     public void seePlayers(){
+        
         for(int i=0; i<idCounter;i++){
             System.out.println(players[i].getInfo());
         }
@@ -34,5 +36,34 @@ public class ArrayPlayers{
     public Player[] getPlayers(){
         return players;
     }
+
+    public void scoresTable(){
+        Player[] playersScore = new Player[players.length];
+        for(int i=0; i<idCounter;i++){
+            playersScore[i]=players[i];
+        }
+        //aqui voy
+        int position=0;
+        Player change;
+        for(int i=0; i<idCounter; i++){
+            change = playersScore[i];
+            position=i;
+            for(int j=0;j<idCounter; j++){
+                if(change.getGanadas()>playersScore[j].getGanadas()){
+                    position =j;
+                    change = playersScore[j];
+                }
+            }
+
+            playersScore[position]=playersScore[i];
+            playersScore[i]=change;
+        }
+
+        for(int i=0; i<idCounter;i++){
+            System.out.println(playersScore[i].getInfo());
+        }
+
+    }
+
 
 }

@@ -14,7 +14,6 @@ public class HandlerGame {
 
 
     public HandlerGame(Player[] players) {
-        //this.hp = players;
         this.hPlayers = new HandlerPlayers(players);
     }
 
@@ -34,7 +33,7 @@ public class HandlerGame {
         if(tmp) {
             for(int i=0; i<2;i++){
                 if(i==0){
-                    idP1=hPlayers.selectPlayersid(i);
+                    idP1=hPlayers.selectPlayersid(i); // i is only for print player #1
                     System.out.println("Player: "+idP1);
 
                 }else{
@@ -65,16 +64,17 @@ public class HandlerGame {
     }
     
     public void printPosition(int id){
-        System.out.println("Player : "+id);
         int tmpId = id;
-
-        boolean tmp = false;
+        
+        boolean tmp = true;
         do{
+            //System.out.println("Id temporal: "+tmpId);
+            System.out.println("Turn Player : "+tmpId);
             tmp= hPanel.position();
+            hPlayers.addScore(id-1);
             tmpId=change(id);
-            System.out.println("Id temporal: "+tmpId);
-            hPlayers.addScore(id);
-        }while(!tmp);
+        }while(tmp);
+        System.out.println("End Game");
     }
 
     public void inGame(int id){

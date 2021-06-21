@@ -24,6 +24,9 @@ public class HandlerPanel {
 
 
     public boolean position() {
+        boolean tmp = false;
+        do{
+
             System.out.println("\n\n");
             //initial position
             int x = getEntero("Select #row: ");
@@ -39,14 +42,17 @@ public class HandlerPanel {
             
 
             if(op1==true && op2==true){
-                
                 p.printBoard(x,y,x1,y1);
-                System.out.println("Logrado");
+                System.out.println("Successful..");
+                tmp=true; //if draw is ok
+                return true;
 
             }else{
                 p.printBoard();
+                System.out.println("Try again...");
+                return false; //if draw is not ok
             }
-        return true;
+        }while(!tmp);
     }
 
 
@@ -75,5 +81,5 @@ public class HandlerPanel {
 
 
 
-    
+
 }
